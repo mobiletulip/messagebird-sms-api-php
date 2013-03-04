@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<!--
+    =======================================================================
+     File:     example_form.html
+     Created:  2010-07-06
+     Author:   MessageBird B.V.
+     Version:  v1.2 - 04-03-2013
+
+     For more information visit http://www.messagebird.com/content/api
+     This example HTML requires to be on an web-server with PHP 5.1.x support to work
+     It needs the example_form.php script to be in the same directory
+    ========================================================================
+-->
+    <head>
+        <title>MessageBird API Example2</title>
+    </head>
+    <body>
+        <form name="apiExampleForm" action="example_form.php" method="post">
+            <table summary="API Form">
+                <tr>
+                    <td>Destination: *</td>
+                    <td><input value="31600000000" type="text" name="destination" /></td>
+                </tr>
+                <tr>
+                    <td>Sender: *</td>
+                    <td><input value="YourSender" type="text" name="sender" /></td>
+                </tr>
+                <tr>
+                    <td>Reference:</td>
+                    <td><input type="text" name="reference" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Message: *</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="message" rows="6" cols="50">This is a test message</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" name="submit">Send message</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2">* Are required fields</td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
