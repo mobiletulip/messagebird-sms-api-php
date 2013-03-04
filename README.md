@@ -1,7 +1,7 @@
-messagebird-sms-api-php
-===============
+MessageBird SMS PHP Class
+========================
 
-Quickly send an SMS through the Messagebird.com API (http://www.messagebird.com/sms-api)
+Quickly send an SMS through the Messagebird.com API with this PHP Class (http://www.messagebird.com/sms-api)
 
 See the example.php and example_form.php for examples.
 
