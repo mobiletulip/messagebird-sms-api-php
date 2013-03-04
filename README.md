@@ -1,7 +1,7 @@
 messagebird-sms-api-php
 ===============
 
-Quickly send an SMS through the Messagebird.com API (http://www.messagebird.com/sms-api
+Quickly send an SMS through the Messagebird.com API (http://www.messagebird.com/sms-api)
 
 See the example.php and example_form.php for examples.
 
