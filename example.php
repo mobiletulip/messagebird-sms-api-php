@@ -27,6 +27,12 @@
 	// Set an reference, optional
 	$sms->setReference ( '123456789' );
 
+	// Replace non GSM-7 characters by appropriate valid GSM-7 characters
+	// $sms->setReplacechars(false);
+
+	// If you want a dlr notification of the message send to another url then that you have set on the web site, you can use this parameter. Don't forget to set a reference!
+	// $sms->setDlrUrl('http://www.example.com/dlr_url.php');
+
 	// Send the message to the destination(s)
 	$sms->sendSms ( 'This is a test message' );
 

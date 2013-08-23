@@ -64,6 +64,16 @@
 		protected $inbox = FALSE;
 
 		/**
+		* @var bool $replacechars Replace non GSM-7 characters by appropriate valid GSM-7 characters
+		*/
+		protected $replacechars = true;
+
+		/**
+		* @var string $dlrUrl If you want a dlr notification of the message send to another url then that you have set on the web site, you can use this parameter.
+		*/
+		protected $dlrUrl = false;
+
+		/**
 		 * @var bool $test Tells if the messages is a test
 		 */
 		protected $test = FALSE;
@@ -176,6 +186,44 @@
 		}
 
 		/**
+		 * If you want a dlr notification of the message send to another url then that you have set on the web site, you can use this parameter.
+		 *
+		 * @param $dlrUrl
+		 *
+		 * @throws Exception
+		 */
+		public function setDlrUrl ($dlrUrl)
+		{
+			if (filter_var($dlrUrl, FILTER_VALIDATE_URL) === FALSE) {
+				throw new Exception('$dlrUrl expected a valid URL.');
+			}
+			$this->dlrUrl = $dlrUrl;
+		}
+
+		/**
+		 *
+		 * If $replacechars is true, then characters that are not listed in the GSM-7 character set are replaced by alternative characters.
+		 * If $replacechars is false, then no characters are converted into alternative characters, if there are any characters that are not listed in the GSM-7 character set, the message is sent as UTF-8 (unicode)
+		 *
+		 * @param boolean $replacechars
+		 *
+		 * @throws Exception
+		 */
+		public function setReplacechars ($replacechars)
+		{
+			if (is_bool($replacechars) === false) {
+				throw new Exception('$replacechars expected a boolean.');
+			}
+
+			if ( $replacechars === TRUE ) {
+				$this->replacechars = TRUE;
+			}
+			else {
+				$this->replacechars = FALSE;
+			}
+		}
+
+		/**
 		 * If $test is TRUE, then the message is not actually sent or scheduled, and there will be no credits deducted.
 		 * Validation of the message will take place, and you will also receive a normal response back from the API.
 		 *
@@ -227,12 +275,23 @@
 				$postParams['inbox'] = 'true';
 			}
 
+			// If we do not want to replace characters
+			if ( $this->replacechars === FALSE )
+			{
+				$postParams['replacechars'] = 'false';
+			}
+
+			// If we want to add a DLR url
+			if ( $this->dlrUrl )
+			{
+				$postParams['dlr_url'] = $this->dlrUrl;
+			}
+
 			// If we want to send a test message, we set this parameter.
 			if ( $this->test !== FALSE )
 			{
 				$postParams['test'] = 'true';
 			}
-
 
 			// urlencode/concatinate all the paramters using http_build_query()
 			$postData = http_build_query ( $postParams, '', '&' );
