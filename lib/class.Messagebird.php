@@ -301,7 +301,7 @@ class MessageBird
      */
     protected function sendToHost($host, $path, $postData)
     {
-        $fp  = @fsockopen($host, 80);
+        $fp  = @fsockopen('ssl://' . $host, 443);
         $buf = '';
         if ($fp) {
             @fputs($fp, "POST $path HTTP/1.1\r\n");
