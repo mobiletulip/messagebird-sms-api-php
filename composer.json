@@ -1,7 +1,7 @@
 {
 	"name": "mobiletulip/messagebird-sms-api-bundle",
 	"description": "Implements the MessageBird SMS gateway",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"autoload": {
 		"files": ["lib/class.Messagebird.php"]
 	}

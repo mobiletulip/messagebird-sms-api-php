@@ -4,7 +4,7 @@
  *  File:        class.Messagebird.php
  *  Created:     10-01-2010
  *  Author:      MessageBird B.V.
- *  Version:     v1.2 - 04-03-2013
+ *  Version:     v1.2.1 - 12-09-2013
  *
  *  More information? Go to www.messagebird.com/sms-api
  * ========================================================================
