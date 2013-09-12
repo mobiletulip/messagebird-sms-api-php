@@ -39,6 +39,13 @@ $sms->setReference('123456789');
 // If $test is TRUE, then the message is not actually sent or scheduled, and there will be no credits deducted.
 // $sms->setTest(true);
 
+// The message will be send as a voice message and the gateway_id will be overwritten to 8, which is the voice gateway. (Dutch only for the moment)
+// $sms->setVoice(true);
+
+// Set the quality of the route that you want to send the message.
+// $sms->setGateway('quality');
+
+
 // Send the message to the destination(s)
 $sms->sendSms('This is a test message');
 

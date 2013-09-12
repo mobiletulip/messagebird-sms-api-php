@@ -28,6 +28,10 @@
  */
 class MessageBird
 {
+    const GATEWAY_VOICE = 8;
+    const GATEWAY_BASIC = 239;
+    const GATEWAY_BUSINESS = 240;
+
     /**
      * @var string
      */
@@ -72,6 +76,16 @@ class MessageBird
      * @var string $dlrUrl If you want a dlr notification of the message send to another url then that you have set on the web site, you can use this parameter.
      */
     protected $dlrUrl = false;
+
+    /**
+     * @var null $gateway_id Change de route over which the message should be send.
+     */
+    protected $gateway_id = null;
+
+    /**
+     * @var bool $voice If you want to send a voice message. It will set the gateway_id to 8 which is the voice gateway.
+     */
+    protected $voice = false;
 
     /**
      * @var bool $test Tells if the messages is a test
@@ -220,6 +234,47 @@ class MessageBird
     }
 
     /**
+     * Set the quality of the route that you want to send the message. See the website for more information
+     * https://messagebird.com/en/settings/index
+     *
+     * @param $gateway
+     */
+    public function setGateway ($gateway)
+    {
+        if ($gateway === 'basic') {
+            $this->setGatewayId(self::GATEWAY_BASIC);
+        } elseif ($gateway === 'business') {
+            $this->setGatewayId(self::GATEWAY_BUSINESS);
+        }
+    }
+
+    /**
+     * Change de route over which the message should be send. Default possibilities are 239 for basic, 240 for quality and 8 for voice. See the website for more information
+     * https://messagebird.com/en/settings/index
+     *
+     * @param $gatewayId
+     */
+    public function setGatewayId ($gatewayId)
+    {
+        $this->gateway_id = (int) $gatewayId;
+    }
+
+
+    /**
+     * If $voice is TRUE, the message will be send as a voice message and the gateway_id will be overwritten to 8, which is the voice gateway. (Dutch only for the moment)
+     *
+     * @param boolean $voice
+     */
+    public function setVoice($voice)
+    {
+        if ($voice === true) {
+            $this->voice = true;
+        } else {
+            $this->voice = false;
+        }
+    }
+
+    /**
      * If $test is TRUE, then the message is not actually sent or scheduled, and there will be no credits deducted.
      * Validation of the message will take place, and you will also receive a normal response back from the API.
      *
@@ -275,6 +330,14 @@ class MessageBird
         // If we want to add a DLR url
         if ($this->dlrUrl) {
             $postParams['dlr_url'] = $this->dlrUrl;
+        }
+
+        // If we want to send a voice message, we set this parameter.
+        if ($this->voice === true) {
+            $postParams['gateway_id'] = self::GATEWAY_VOICE;
+        // Set a custom gateway
+        } elseif ($this->gateway_id) {
+            $postParams['gateway_id'] = $this->gateway_id;
         }
 
         // If we want to send a test message, we set this parameter.
