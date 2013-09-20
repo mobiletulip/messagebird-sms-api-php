@@ -29,8 +29,8 @@
 class MessageBird
 {
     const GATEWAY_VOICE = 8;
-    const GATEWAY_BASIC = 239;
-    const GATEWAY_BUSINESS = 240;
+    const GATEWAY_BASIC = 2;
+    const GATEWAY_BUSINESS = 1;
 
     /**
      * @var string
