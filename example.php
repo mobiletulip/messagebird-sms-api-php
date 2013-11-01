@@ -52,5 +52,4 @@ $sms->sendSms('This is a test message');
 echo "\nResponse:";
 echo "\n" . $sms->getResponseCode();
 echo "\n" . $sms->getResponseMessage();
-echo "\n" . $sms->getCreditBalance();
 echo "\n";

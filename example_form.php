@@ -79,7 +79,6 @@ if (! empty($_POST)) {
         echo '<br />Response Info:';
         echo '<br />Response Code: ' . $sms->getResponseCode();
         echo '<br />Response Message: ' . $sms->getResponseMessage();
-        echo '<br />Credit Balance: ' . $sms->getCreditBalance();
         echo '<br />';
 
         // There is no destination or message posted, we realy need those two to work.

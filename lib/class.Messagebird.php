@@ -99,7 +99,6 @@ class MessageBird
 
     protected $apiResponseCode;
     protected $apiResponseMessage;
-    protected $apiCreditBalance;
 
     /**
      * This constructor sets both username and password
@@ -399,7 +398,6 @@ class MessageBird
 
         $this->apiResponseCode    = $data->item->responseCode;
         $this->apiResponseMessage = $data->item->responseMessage;
-        $this->apiCreditBalance   = $data->item->credits;
     }
 
     /**
@@ -420,15 +418,5 @@ class MessageBird
     public function getResponseMessage()
     {
         return $this->apiResponseMessage;
-    }
-
-    /**
-     * Will return the current credit balance left after sending the messages.
-     *
-     * @return integer The current credit balance after sending the message. (0 when an error occurred)
-     */
-    public function getCreditBalance()
-    {
-        return $this->apiCreditBalance;
     }
 }
