@@ -12,7 +12,7 @@
  * ========================================================================
  */
 
-require_once 'lib/class.MessageBird.php';
+require_once 'lib/class.Messagebird.php';
 
 // Set the MessageBird username and password. Will be used later in the script
 $username = 'username';
