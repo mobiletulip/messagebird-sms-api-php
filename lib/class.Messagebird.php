@@ -93,6 +93,11 @@ class MessageBird
     protected $test = false;
 
     /**
+     * @var array This is filled with information about the premium message if a premium message needs to be send.
+     */
+    protected $premium = array();
+
+    /**
      * @var integer/string $timestamp Holds the timestamp to schedule a message, instead of sending it now
      */
     protected $timestamp = null;
@@ -289,6 +294,20 @@ class MessageBird
     }
 
     /**
+     * If you want to send a premium message set this values.
+     *
+     * @param float  $tariff - This is the price that the receiver pays for the message (in cents)
+     * @param int    $shortcode - The short code from which the premium message is sent.
+     * @param string $keyword - The keyword from which the premium message is sent.
+     * @param null   $mid - (optional) When a response is sent to a received message of an end user the message-ID of the  received message must be included.
+     * @param null   $member - (optional) This parameter indicates whether the recipient is or is not a member of a subscription service.
+     */
+    public function setPremium ($tariff, $shortcode, $keyword, $mid = null, $member = null)
+    {
+        $this->premium = array('tariff' => (int) $tariff, 'shortcode' => (int) $shortcode, 'keyword' => (string) $keyword, 'mid' => $mid, 'member' => $member);
+    }
+
+    /**
      * Will actualy send the given message to the destinations given using addDestination()
      *
      * @param String $message The message which should be sent to the added destinations.
@@ -337,6 +356,10 @@ class MessageBird
         // Set a custom gateway
         } elseif ($this->gateway_id) {
             $postParams['gateway_id'] = $this->gateway_id;
+        }
+
+        if ($this->premium) {
+            $postParams = array_merge($postParams, $this->premium);
         }
 
         // If we want to send a test message, we set this parameter.

@@ -1,10 +1,10 @@
 <?php
 /**
  * =======================================================================
- *  File:       example_form.php
+ *  File:        example_form.php
  *  Created:     2010-07-06
  *  Author:      MessageBird B.V.
- *  Version:     v1.2 - 04-03-2013
+ *  Version:     v1.3 - 20-01-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  *
@@ -36,15 +36,17 @@ $sms->setReference('123456789');
 // If you want a dlr notification of the message send to another url then that you have set on the web site, you can use this parameter. Don't forget to set a reference!
 // $sms->setDlrUrl('http://www.example.com/dlr_url.php');
 
-// If $test is TRUE, then the message is not actually sent or scheduled, and there will be no credits deducted.
-// $sms->setTest(true);
-
 // The message will be send as a voice message and the gateway_id will be overwritten to 8, which is the voice gateway. (Dutch only for the moment)
 // $sms->setVoice(true);
 
 // Set the quality of the route that you want to send the message.
 // $sms->setGateway('quality');
 
+// Send a premium message
+// $sms->setPremium(150, 1008, 'MessageBird');
+
+// If $test is TRUE, then the message is not actually sent or scheduled, and there will be no credits deducted.
+// $sms->setTest(true);
 
 // Send the message to the destination(s)
 $sms->sendSms('This is a test message');
