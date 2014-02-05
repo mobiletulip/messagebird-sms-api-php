@@ -4,7 +4,7 @@
  *  File:        class.Messagebird.php
  *  Created:     10-01-2010
  *  Author:      MessageBird B.V.
- *  Version:     v1.3 - 20-01-2014
+ *  Version:     v1.3.1 - 20-01-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  * ========================================================================
@@ -53,7 +53,7 @@ class MessageBird
     protected $destination = array ();
 
     /**
-     * @var integer $reference The reference to identify delivery reports using this reference and the destinations
+     * @var string $reference The reference to identify delivery reports using this reference and the destinations
      */
     protected $reference = null;
 
@@ -130,11 +130,11 @@ class MessageBird
     /**
      * Sets the reference linked to the MSISDN so the correct status can be retrieved later.
      *
-     * @param Integer $reference An unique reference so delivery reports can be linked to the correct message and MSISDN
+     * @param string $reference An unique reference so delivery reports can be linked to the correct message and MSISDN
      */
     public function setReference($reference)
     {
-        $this->reference = (int) $reference;
+        $this->reference = $reference;
     }
 
     /**
@@ -419,8 +419,8 @@ class MessageBird
         }
         $data = simplexml_load_string($xml, null, $xmlOptions);
 
-        $this->apiResponseCode    = $data->item->responseCode;
-        $this->apiResponseMessage = $data->item->responseMessage;
+        $this->apiResponseCode    = (string) $data->item->responseCode;
+        $this->apiResponseMessage = (string) $data->item->responseMessage;
     }
 
     /**

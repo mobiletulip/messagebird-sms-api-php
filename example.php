@@ -4,7 +4,7 @@
  *  File:        example_form.php
  *  Created:     2010-07-06
  *  Author:      MessageBird B.V.
- *  Version:     v1.3 - 20-01-2014
+ *  Version:     v1.3.1 - 20-01-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  *
