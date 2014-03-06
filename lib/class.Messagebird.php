@@ -354,7 +354,8 @@ class MessageBird
         // If we want to send a voice message, we set this parameter.
         if ($this->voice === true) {
             $postParams['gateway_id'] = self::GATEWAY_VOICE;
-            // Set a custom gateway
+
+        // Set a custom gateway
         } elseif ($this->gateway_id) {
             $postParams['gateway_id'] = $this->gateway_id;
         }
