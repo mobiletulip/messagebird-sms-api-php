@@ -104,6 +104,7 @@ class MessageBird
 
     protected $apiResponseCode;
     protected $apiResponseMessage;
+    protected $apiResponseBalance;
 
     /**
      * This constructor sets both username and password
@@ -419,8 +420,23 @@ class MessageBird
         }
         $data = simplexml_load_string($xml, null, $xmlOptions);
 
-        $this->apiResponseCode    = (string) $data->item->responseCode;
-        $this->apiResponseMessage = (string) $data->item->responseMessage;
+        //Get account balance if exists
+        $balanceNode = $data->xpath('/response/item/credits');
+        if(!empty($balanceNode))
+        {
+            $this->apiResponseBalance  = (string) $data->item->credits;
+        }
+
+        //Get response code and message
+        $responseCode = $data->xpath('/response/item/responseCode');
+        $responseMessage = $data->xpath('/response/item/responseMessage');
+        if(!empty($responseCode) && !empty($responseMessage))
+        {
+            $this->apiResponseCode      = (string) $data->item->responseCode;
+            $this->apiResponseMessage   = (string) $data->item->responseMessage;
+        }
+
+
     }
 
     /**
@@ -441,5 +457,26 @@ class MessageBird
     public function getResponseMessage()
     {
         return $this->apiResponseMessage;
+    }
+
+    /**
+     * Will return the number of credits your account has
+     * @return Integer The amount of Credits you have
+     */
+    public function getBalance()
+    {
+        $postParams = array(
+            'username'     => $this->username,
+            'password'     => $this->password
+        );
+
+        $postData = http_build_query($postParams, '', '&');
+
+        $result = $this->sendToHost('api.messagebird.com', '/api/credits', $postData);
+        list($headers, $xml) = preg_split("/(\r?\n){2}/", $result, 2);
+        $this->XMLtoResult($xml);
+
+        return $this->apiResponseBalance;
+
     }
 }
