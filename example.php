@@ -2,9 +2,9 @@
 /**
  * =======================================================================
  *  File:        example_form.php
- *  Created:     2010-07-06
+ *  Created:     06-07-2010
  *  Author:      MessageBird B.V.
- *  Version:     v1.3.1 - 20-01-2014
+ *  Version:     v1.4 - 11-03-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  *
