@@ -2,9 +2,7 @@
 /**
  * =======================================================================
  *  File:        class.Messagebird.php
- *  Created:     10-01-2010
  *  Author:      MessageBird B.V.
- *  Version:     v1.4 - 11-03-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  * ========================================================================

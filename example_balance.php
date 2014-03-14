@@ -2,9 +2,7 @@
 /**
  * =======================================================================
  *  File:        example_balance.php
- *  Created:     03-11-2014
  *  Author:      MessageBird B.V.
- *  Version:     v1.4 - 11-03-2014
  *
  *  More information? Go to www.messagebird.com/sms-api
  *
