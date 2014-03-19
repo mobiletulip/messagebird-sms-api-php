@@ -39,4 +39,4 @@ For technical documentation see:
 * http://www.messagebird.com/sms-api
 
 ## License
-The MessageBird SMS API Client for PHP is licensed under an unknown license.
+The MessageBird SMS API Client for PHP is licensed under [BSD (Berkeley Software Distribution) License](http://www.opensource.org/licenses/bsd-license.php). Copyright (c) 2014, MessageBird
