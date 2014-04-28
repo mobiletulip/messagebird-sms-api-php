@@ -10,7 +10,7 @@
  * ========================================================================
  */
 
-require_once 'lib/class.MessageBird.php';
+require_once 'lib/class.Messagebird.php';
 
 // Set the Messabeird username and password, and create an instance of the MessageBird class
 $sms = new MessageBird('username', 'password');
