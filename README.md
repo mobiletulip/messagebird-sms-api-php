@@ -1,3 +1,7 @@
+# New API Released
+We've released a new MessageBird REST API: [https://www.messagebird.com/developers/php](https://www.messagebird.com/developers/php) Please use the [new repository](https://github.com/messagebird/php-rest-api) for new projects and contributions.
+Note that old API's (like this one) will still be actively supported in the future.
+
 # MessageBird SMS API Client for PHP
 [![Latest Stable Version](https://poser.pugx.org/mobiletulip/messagebird-sms-api-bundle/v/stable.png)](https://packagist.org/packages/mobiletulip/messagebird-sms-api-bundle)
 [![Total Downloads](https://poser.pugx.org/mobiletulip/messagebird-sms-api-bundle/downloads.png)](https://packagist.org/packages/mobiletulip/messagebird-sms-api-bundle)
